@@ -1,0 +1,29 @@
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  username: deploy
+  password: deploy
+  # For details on connection pooling, see Rails configuration guide
+  # http://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: sharebox_development
+
+
+
+
+test:
+  <<: *default
+  database: sharebox_test
+
+
+
+
+
+production:
+  <<: *default
+  database: sharebox_production
+  password: <%= ENV['SHAREBOX_DATABASE_PASSWORD'] %>

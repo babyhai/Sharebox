@@ -1,0 +1,19 @@
+
+<% title "文件" %>
+
+<table>
+  <tr>
+    <th>上传文件</th>
+  </tr>
+  <% for attachment in @attachments %>
+      <tr>
+        <td><%= link_to attachment.file_name, download_url(attachment) %></td>
+        <td><%= link_to "详情页", attachment %></td>
+        <td><%= link_to "编辑", edit_attachment_path(attachment) %></td>
+        <td><%= link_to "删除", attachment, :confirm => '是否删除?', :method => :delete %></td>
+      </tr>
+  <% end %>
+</table>
+<p><%= link_to "上传新文件", new_attachment_path %></p>
+
+
